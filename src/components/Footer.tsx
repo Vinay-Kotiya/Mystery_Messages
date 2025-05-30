@@ -2,13 +2,13 @@
 
 import { Github, Linkedin, Instagram } from "lucide-react";
 import Link from "next/link";
-import { Calendar } from "@/components/ui/calendar";
+
 import { useState } from "react";
 export default function Footer() {
   const [date, setDate] = useState<Date | undefined>(new Date());
   return (
     <footer className="bg-zinc-900 text-white py-8 px-4">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="max-w-6xl mx-auto flex md:flex-row justify-between gap-6 ">
         {/* Brand */}
         <div>
           <h1 className="text-2xl font-bold ">Mystery Messages</h1>
@@ -45,21 +45,21 @@ export default function Footer() {
             </li>
           </ul>
         </div> */}
-        <div className="flex">
+        {/* <div className="flex">
           <Calendar
             mode="single"
             selected={date}
             onSelect={setDate}
             className="rounded-md border shadow"
           />
-        </div>
+        </div> */}
 
         {/* Socials */}
         <div>
           <h2 className="text-lg font-semibold mb-3 ">Follow Us</h2>
           <div className="flex space-x-4 text-xl">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/Vinay-Kotiya"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-purple-400"
@@ -67,7 +67,7 @@ export default function Footer() {
               <Github />
             </a>
             <a
-              href="https://linkedin.com/in/yourprofile"
+              href="https://www.linkedin.com/in/vinay-kotiya-a405b6316/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-purple-400"
@@ -75,7 +75,7 @@ export default function Footer() {
               <Linkedin />
             </a>
             <a
-              href="https://instagram.com/yourprofile"
+              href="https://www.instagram.com/vinay_kotiya7714_/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-purple-400"

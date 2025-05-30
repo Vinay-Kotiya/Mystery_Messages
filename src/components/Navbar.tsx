@@ -31,7 +31,7 @@ const Navbar = () => {
     // </div>
     <nav className="p-4 md:p-6 shadow-md bg-gray-900  text-white md:m-5 md:rounded-2xl">
       <div className="container mx-auto flex flex-row justify-between items-center">
-        <a href="#" className="text-xl font-bold mb-4 md:mb-0 ">
+        <a href="/" className="text-xl font-bold mb-4 md:mb-0 ">
           Mystery Messages
         </a>
         {session ? (
