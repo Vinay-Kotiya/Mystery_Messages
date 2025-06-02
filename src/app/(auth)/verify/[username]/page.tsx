@@ -13,7 +13,7 @@ import { verifySchema } from "@/schemas/verifySchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 // import { Button } from "@react-email/components";
 import axios from "axios";
-import { Link, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -21,7 +21,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 // import { useDebounceCallback } from "usehooks-ts";
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const [isVerifyingCode, setIsVerifyingCode] = useState(false);
   const params = useParams<{ username: string }>();
@@ -55,7 +55,7 @@ const page = () => {
           <h1 className="text-4xl lg:text-5xl font-extrabold tracking-tight mb-6">
             Verify Your Email
           </h1>
-          {/* <p className="mb-4">Sign up to start your anonymous adventure</p> */}
+          <p className="mb-4">We sent Verification code to your email </p>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -107,4 +107,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

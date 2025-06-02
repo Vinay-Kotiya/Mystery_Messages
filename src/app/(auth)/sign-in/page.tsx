@@ -3,17 +3,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useDebounceCallback } from "usehooks-ts";
-import { useEffect, useState } from "react";
+
+import { useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { signUpSchema } from "@/schemas/signUpSchema";
-import axios from "axios";
-import { ApiResponse } from "@/types/ApiResponse";
+
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -25,7 +22,7 @@ import Link from "next/link";
 import { Loader2 } from "lucide-react";
 import { signInSchema } from "@/schemas/signInSchema";
 import { signIn } from "next-auth/react";
-const page = () => {
+const Page = () => {
   // const [username, setUsername] = useState("");
   // const [userMessages, setUserMessages] = useState("");
   // const [isCheckingUsername, setIsCheckingUsername] = useState(false);
@@ -125,4 +122,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

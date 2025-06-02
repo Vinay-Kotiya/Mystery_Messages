@@ -1,9 +1,7 @@
 "use client";
 import {
   Card,
-  CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -26,12 +24,13 @@ import axios, { AxiosError } from "axios";
 import { ApiResponse } from "@/types/ApiResponse";
 type MessageDeleteProps = {
   message: Message;
-  onMessageDelete: (messageId: any) => void;
+  onMessageDelete: (messageId: string) => void;
 };
 const MessageCard = ({ message, onMessageDelete }: MessageDeleteProps) => {
   const handleDeleteMessage = async () => {
     try {
-      onMessageDelete(message._id);
+      const messageId = message._id + "";
+      onMessageDelete(messageId);
       const response = await axios.delete<ApiResponse>(
         `api/delete-message/${message._id}`
       );

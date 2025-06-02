@@ -4,7 +4,7 @@ import { getServerSession, User } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/options";
 import mongoose from "mongoose";
 
-export async function GET(request: Request) {
+export async function GET() {
   await dbConnect();
   const session = await getServerSession(authOptions);
   const user: User = session?.user as User;
@@ -31,7 +31,7 @@ export async function GET(request: Request) {
         { status: 404 }
       );
     }
-    console.log("User messages:", userData[0].messages); //see it's structure
+    // console.log("User messages:", userData[0].messages); //see it's structure
 
     return Response.json(
       { success: true, messages: userData[0].messages },

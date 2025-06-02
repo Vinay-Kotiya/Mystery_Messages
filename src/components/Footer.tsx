@@ -1,11 +1,8 @@
 "use client";
 
 import { Github, Linkedin, Instagram } from "lucide-react";
-import Link from "next/link";
 
-import { useState } from "react";
 export default function Footer() {
-  const [date, setDate] = useState<Date | undefined>(new Date());
   return (
     <footer className="bg-zinc-900 text-white py-8 px-4">
       <div className="max-w-6xl mx-auto flex md:flex-row justify-between gap-6 ">
@@ -88,7 +85,8 @@ export default function Footer() {
 
       {/* Bottom */}
       <div className="text-center text-sm text-zinc-500 mt-8 border-t border-zinc-700 pt-4">
-        © {new Date().getFullYear()} Mystery Messages. Built with 💜 by Vinay.
+        © {new Date().getFullYear()} Mystery Messages. Built with 💜 by Vinay
+        Kotiya.
       </div>
     </footer>
   );
