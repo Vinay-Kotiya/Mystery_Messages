@@ -109,9 +109,9 @@ const Page = () => {
       const response = await axios.post<ApiResponse>("/api/sign-up", data);
       if (response.status === 201) {
         toast.success("Sign up successful! Redirecting to Verify page...");
-        setTimeout(() => {
-          router.replace(`/verify/${username}`);
-        }, 2000);
+        const code = response.data.verifyCode;
+        // console.log("data:", response.data);
+        router.replace(`/verify/${username}?code=${code}`);
       }
     } catch (err) {
       const error = err as AxiosError<{ message?: string }>;

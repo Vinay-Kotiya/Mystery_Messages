@@ -25,9 +25,14 @@ export async function GET() {
       { $sort: { "messages.createdAt": -1 } },
       { $group: { _id: "$_id", messages: { $push: "$messages" } } },
     ]);
-    if (!userData || userData.length === 0) {
+    if (!userData) {
       return Response.json(
         { success: false, message: "User not found" },
+        { status: 404 }
+      );
+    } else if (userData.length === 0) {
+      return Response.json(
+        { success: false, message: "Messages is empty" },
         { status: 404 }
       );
     }

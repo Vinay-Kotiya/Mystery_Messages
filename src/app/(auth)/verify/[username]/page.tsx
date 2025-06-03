@@ -14,8 +14,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 // import { Button } from "@react-email/components";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
-import { useParams, useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -25,6 +25,37 @@ const Page = () => {
   const router = useRouter();
   const [isVerifyingCode, setIsVerifyingCode] = useState(false);
   const params = useParams<{ username: string }>();
+  const searchParams = useSearchParams();
+  const code = searchParams.get("code");
+
+  const copyToClipboard = () => {
+    // navigator.clipboard.writeText(code);
+    // toast.success("Verification code has been copied to clipboard");
+    if (code) {
+      navigator.clipboard.writeText(code);
+      toast.success("Verification code has been copied to clipboard");
+    } else {
+      toast.error("No verification code to copy");
+    }
+  };
+  const getCode = () => {
+    if (code) {
+      toast(`Verification code: ${code}`, {
+        description:
+          "Our email service is close temporary so we provide Verification code through Toast Message ",
+        action: {
+          label: "Copy",
+          onClick: () => {
+            copyToClipboard();
+          },
+        },
+      });
+    }
+  };
+  useEffect(() => {
+    getCode();
+  }, []);
+
   const form = useForm<z.infer<typeof verifySchema>>({
     resolver: zodResolver(verifySchema),
     defaultValues: {
@@ -90,7 +121,7 @@ const Page = () => {
               )}
             />
 
-            <Button type="submit" disabled={isVerifyingCode}>
+            <Button type="submit" disabled={isVerifyingCode} className="mr-5">
               {isVerifyingCode ? (
                 <>
                   <Loader2 className="h-4 w-4 mr-4 animate-spin" />
@@ -99,6 +130,9 @@ const Page = () => {
               ) : (
                 "Verify"
               )}
+            </Button>
+            <Button type="button" disabled={isVerifyingCode} onClick={getCode}>
+              Get Code
             </Button>
           </form>
         </Form>

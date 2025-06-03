@@ -48,6 +48,9 @@ const Page = () => {
     });
     if (result?.error) {
       toast.error("Incorrect Username or Password");
+      data.identifier = "";
+      data.password = "";
+      console.log(result.error);
     }
     if (result?.url) {
       router.replace("/dashboard");
